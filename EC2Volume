@@ -1,14 +1,16 @@
 Resources:
   EC2Volume:
+    DeletionPolicy: Retain
     Type: 'AWS::EC2::Volume'
     Properties:
       VolumeType: standard
       Size: 50
       AvailabilityZone: us-east-1a
   EC2Volume2:
+    DeletionPolicy: Retain
     Type: 'AWS::EC2::Volume'
     Properties:
       VolumeType: standard
       Size: 20
       AvailabilityZone: us-east-1a
-      
+   
