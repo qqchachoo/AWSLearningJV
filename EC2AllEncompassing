@@ -1,0 +1,26 @@
+Resources:
+  EC2Volume:
+    DeletionPolicy: Retain
+    Type: 'AWS::EC2::Volume'
+    Properties:
+      VolumeType: standard
+      Size: 50
+      AvailabilityZone: us-east-1a
+  EC2Volume2:
+    DeletionPolicy: Retain
+    Type: 'AWS::EC2::Volume'
+    Properties:
+      VolumeType: standard
+      Size: 20
+      AvailabilityZone: us-east-1a
+   EC2Temp:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: ami-0c02fb55956c7d316
+      InstanceType: t2.micro
+      AvailabilityZone: us-east-1a
+      Volumes:
+        - VolumeId: !Ref Ec2Volume2
+          Device: /dev/xvdh
+        - VolumeId: !Ref EC2Volume
+          Device: /dev/xvdp   
