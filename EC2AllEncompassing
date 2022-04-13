@@ -20,7 +20,7 @@ Resources:
       InstanceType: t2.micro
       AvailabilityZone: us-east-1a
       Volumes:
-        - VolumeId: !Ref Ec2Volume2
+        - VolumeId: !Ref EC2Volume2
           Device: /dev/xvdh
         - VolumeId: !Ref EC2Volume
           Device: /dev/xvdp   
