@@ -13,7 +13,7 @@ Resources:
       VolumeType: standard
       Size: 20
       AvailabilityZone: us-east-1a
-   EC2Temp:
+  EC2Temp:
     Type: 'AWS::EC2::Instance'
     Properties:
       ImageId: ami-0c02fb55956c7d316
