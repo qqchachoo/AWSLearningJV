@@ -1,0 +1,19 @@
+name: InitialConfiguration
+description: 'This will stop firewalld, get updates, install nfs, and apply, enable iscsi for longhorn and update all the things.'
+schemaVersion: 1.0
+phases:
+  -
+    name: stopfirewall
+    steps:
+      -
+        name: StopFirewalld
+        action: ExecuteBash
+        inputs:
+         commands:
+          - systemctl stop firewalld
+          - systemctl disable firewalld
+          - yum install -y nfs-utils cryptsetup iscsi-initiator-utils
+          - systemctl start icsid.service
+          - systemctl enable iscsid.service
+          - yum update -y
+          - yum clean all
