@@ -3,7 +3,7 @@ description: 'This will stop firewalld, get updates, install nfs, and apply, ena
 schemaVersion: 1.0
 phases:
   -
-    name: stopfirewall
+    name: build
     steps:
       -
         name: StopFirewalld
