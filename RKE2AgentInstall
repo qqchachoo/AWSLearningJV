@@ -1,0 +1,27 @@
+name: RKE2AgentInstall
+description: 'This will install the RKE2 service'
+schemaVersion: 1.0
+parameters:
+  - Rancher1_IP:
+      type: string
+      default: ''
+      description: Input the Rancher1 ip in between the ''. 
+  - Token:
+      type: string
+      default: ''
+      description: Input the token from rancher1 /var/lib/rancher/rke2/server/node-token  in between the ''
+phases:
+  -
+    name: build
+    steps:
+      -
+        name: RKE2Install
+        action: ExecuteBash
+        inputs:
+         commands:
+          - curl -sfL https://get.rke2.io | INSTALL_RKE2_TYPE=agent sh -
+          - mkdir -p /etc/rancher/rke2/ 
+          - echo "server: https://{{Rancher1_IP}}:9345" > /etc/rancher/rke2/config.yaml
+          - echo "token: {{Token}}" >> /etc/rancher/rke2/config.yaml
+          - systemctl enable rke2-agent.service
+          - systemctl start rke2-agent.service
