@@ -5,8 +5,7 @@ phases:
   -
     name: build
     steps:
-      -
-        name: RKE2Install
+      - name: RKE2Install
         action: ExecuteBash
         inputs:
          commands:
@@ -15,7 +14,7 @@ phases:
           - systemctl start rke2-server.service
           - ln -s $(find /var/lib/rancher/rke2/data/ -name kubectl) /usr/local/bin/kubectl
           - export KUBECONFIG=/etc/rancher/rke2/rke2.yaml 
-        name: RKEHelm
+      - name: RKEHelm
         action: ExecuteBash
         inputs:
          commands:
